@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
+from collections import Counter
 from rich import print
-from typing import Set
 from enum import Enum
 
 
@@ -10,15 +10,15 @@ class FilePath(Enum):
     FOLLOWING = "following.html"
 
 
-def extract_usernames(file_path: str) -> Set[str]:
+def extract_usernames(file_path: str) -> Counter:
     try:
-        usernames = set()
+        usernames = Counter()
         with open(file_path, 'r', encoding='utf-8') as file:
             soup = BeautifulSoup(file, 'html.parser')
 
             for link in soup.find_all('a', href=True):
                 if "instagram.com" in link['href']:
-                    usernames.add(link.text.strip())
+                    usernames[link.text.strip()] += 1
     except FileNotFoundError:
         print(f"[bold red]Error: File '{file_path}' not found.")
     except Exception as e:
@@ -27,13 +27,13 @@ def extract_usernames(file_path: str) -> Set[str]:
     return usernames
 
 def main():
-    followers = extract_usernames(FilePath.FOLLOWERS.value)
-    following = extract_usernames(FilePath.FOLLOWING.value)
+    followers: Counter = extract_usernames(FilePath.FOLLOWERS.value)
+    following: Counter = extract_usernames(FilePath.FOLLOWING.value)
 
     if not followers or not following:
         return
 
-    not_following_back = following - followers
+    not_following_back: Counter = following - followers
 
     print("\nAccounts you follow but who don't follow you back:")
     if not_following_back:
