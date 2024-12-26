@@ -15,22 +15,18 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-      run: echo "Checked out the code"
 
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.12.7'
-      run: echo "Python 3.12.7 is set up"
 
     - name: Install dependencies
       run: |
-        echo "Upgrading pip"
         python -m pip install --upgrade pip
-        echo "Installing dependencies from requirements.txt"
         pip install -r requirements.txt
 
     - name: Add mock HTML files
       run: |
         mkdir -p mock_data
-        echo '<html><body
+        echo '<html><body></body></html>' > mock_data/index.html
