@@ -29,4 +29,4 @@ jobs:
     - name: Add mock HTML files
       run: |
         mkdir -p mock_data
-        echo '<html><body></body></html>' > mock_data/index.html
+        echo '<html><body><h1>Test</h1></body></html>' > mock_data/test.html
