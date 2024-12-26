@@ -24,7 +24,7 @@ Identify Instagram accounts you follow that don't follow you back using the Inst
 2. **Install Dependencies**:
    Ensure you have Python 3 installed. Then, install the required library:
    ```bash
-   pip install beautifulsoup4
+   pip install -r requirements.txt
    ```
 
 ## **How to Obtain Your Instagram Data**
