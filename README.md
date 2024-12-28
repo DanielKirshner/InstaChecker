@@ -17,7 +17,7 @@ Identify Instagram accounts you follow that don't follow you back using the Inst
 ## **Installation**
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/InstaChecker.git
+   git clone https://github.com/DanielKirshner/InstaChecker
    cd InstaChecker
    ```
 
@@ -39,7 +39,7 @@ Identify Instagram accounts you follow that don't follow you back using the Inst
 
 ## **Usage Instructions**
 1. Place `followers.html` and `following.html` in the same directory as the script.
-2. Run the script:
+2. Run the script [`instachecker.py`](instachecker.py):
    ```bash
    python instachecker.py
    ```
